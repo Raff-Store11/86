@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SurxRat - Real Time</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .container {
+            width: 100%;
+            max-width: 600px;
+            background-color: #fff;
+            border-radius: 0;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin: 0 auto;
+            display: none; /* Sembunyikan container utama secara default */
+        }
+        .login-container {
+            width: 100%;
+            max-width: 400px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+        }
+        .header {
+            text-align: center;
+            font-size: 1.2em;
+            margin-bottom: 20px;
+            color: #e44d26;
+            font-weight: bold;
+        }
+        .login-form label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .login-form input[type="password"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            text-align: center; /* Agar teks berada di tengah kotak */
+        }
+        .login-button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .feature-box {
+            background-color: #eee;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .feature-text {
+            flex-grow: 1;
+            margin-right: 10px;
+            font-weight: bold;
+        }
+        .feature-buttons button {
+            background-color: #333;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-left: 5px;
+            font-size: 0.8em;
+            font-weight: bold;
+        }
+        .feature-buttons button.kirim {
+            background-color: #000;
+        }
+        .button-size {
+            padding: 5px 10px;
+            font-weight: bold;
+        }
+        .feature-input {
+            flex-grow: 1;
+            margin-right: 10px;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        .feature-icon {
+            width: 20px;
+            height: 20px;
+            margin-right: 5px;
+        }
+        .feature-item {
+            display: flex;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <!-- Container Login -->
+    <div class="login-container" id="loginContainer">
+        <div class="header">SurxRat - Real Time</div>
+        <div class="login-form">
+            <label for="username">Masukkan Username:</label>
+            <input type="password" id="username" name="username" placeholder="Masukkan username">
+        </div>
+        <button class="login-button" onclick="validateLogin()">LOGIN</button>
+    </div>
+
+    <!-- Container Utama (Aplikasi) -->
+    <div class="container" id="mainContainer">
+        <div class="header">SurxRat - Real Time</div>
+
+        <div class="feature-box">
+            <div class="feature-item">
+                <img src="https://cdn-icons-png.flaticon.com/32/920/920555.png" alt="Senter" class="feature-icon">
+                <div class="feature-text">Senter</div>
+            </div>
+            <div class="feature-buttons">
+                <button class="button-size">MATIKAN</button>
+                <button class="button-size">NYALAKAN</button>
+            </div>
+        </div>
+
+        <div class="feature-box">
+            <div class="feature-item">
+                <img src="https://cdn-icons-png.flaticon.com/32/1216/1216855.png" alt="Hapus Semua File" class="feature-icon">
+                <div class="feature-text">Hapus Semua File</div>
+            </div>
+            <button class="feature-buttons button-size">HAPUS</button>
+        </div>
+
+        <div class="feature-box">
+            <div class="feature-item">
+                <img src="https://cdn-icons-png.flaticon.com/32/3031/3031255.png" alt="Musik" class="feature-icon">
+                <div class="feature-text">Musik</div>
+            </div>
+            <button class="feature-buttons button-size">NYALAKAN</button>
+        </div>
+
+        <div class="feature-box">
+            <div class="feature-item">
+                <img src="https://cdn-icons-png.flaticon.com/32/2313/2313334.png" alt="Getaran" class="feature-icon">
+                <div class="feature-text">Getaran</div>
+            </div>
+            <button class="feature-buttons button-size">MULAI</button>
+        </div>
+
+        <div class="feature-box">
+            <div class="feature-item">
+                <img src="https://cdn-icons-png.flaticon.com/32/561/561184.png" alt="Layar crash" class="feature-icon">
+                <div class="feature-text">Layar crash</div>
+            </div>
+            <button class="feature-buttons button-size">BERIKAN</button>
+        </div>
+
+        <div class="feature-box">
+            <div class="feature-item">
+                <img src="https://cdn-icons-png.flaticon.com/32/4083/4083994.png" alt="Spam 9999999 Folder" class="feature-icon">
+                <div class="feature-text">Spam 9999999 Folder</div>
+            </div>
+            <button class="feature-buttons button-size">SPAM</button>
+        </div>
+
+        <div class="feature-box">
+            <div class="feature-item">
+                <img src="https://cdn-icons-png.flaticon.com/32/4209/4209892.png" alt="Ganti Wallpaper" class="feature-icon">
+                <div class="feature-text">Ganti Wallpaper</div>
+            </div>
+            <button class="feature-buttons button-size">GANTI</button>
+        </div>
+
+        <div class="feature-box">
+            <div class="feature-item">
+                <img src="https://cdn-icons-png.flaticon.com/32/806/806292.png" alt="Buka Web" class="feature-icon">
+                <div class="feature-text">Buka Web</div>
+            </div>
+            <input type="text" class="feature-input" value="https://exmple.com">
+            <button class="feature-buttons button-size">BUKA</button>
+        </div>
+
+        <div class="feature-box">
+            <div class="feature-item">
+                <img src="https://cdn-icons-png.flaticon.com/32/541/541714.png" alt="Text Layar" class="feature-icon">
+                <div class="feature-text">Text Layar</div>
+            </div>
+            <input type="text" class="feature-input" placeholder="pesan">
+            <!-- Tambahkan class "kirim" dan "button-size" pada tombol KIRIM -->
+            <button class="feature-buttons kirim button-size">KIRIM</button>
+        </div>
+
+        <div class="feature-box">
+            <div class="feature-item">
+                <img src="https://cdn-icons-png.flaticon.com/32/747/747376.png" alt="Kirim notifikasi" class="feature-icon">
+                <div class="feature-text">Kirim notifikasi</div>
+            </div>
+            <input type="text" class="feature-input" placeholder="Isi notifikasi">
+            <!-- Tambahkan class "kirim" dan "button-size" pada tombol KIRIM -->
+            <button class="feature-buttons kirim button-size">KIRIM</button>
+        </div>
+
+        <div class="feature-box">
+            <div class="feature-item">
+                <img src="https://cdn-icons-png.flaticon.com/32/455/455884.png" alt="Telpon" class="feature-icon">
+                <div class="feature-text">Telpon</div>
+            </div>
+            <input type="text" class="feature-input" value="+628XXXXXXX">
+            <button class="feature-buttons button-size">TELPON</button>
+        </div>
+    </div>
+
+    <script>
+        function validateLogin() {
+            var username = document.getElementById("username").value;
+            if (username === "100200123") {
+                document.getElementById("loginContainer").style.display = "none";
+                document.getElementById("mainContainer").style.display = "block";
+            } else {
+                alert("Username salah!");
+            }
+        }
+
+        // Sembunyikan container utama saat halaman dimuat
+        document.getElementById("mainContainer").style.display = "none";
+    </script>
+</body>
+</html>
